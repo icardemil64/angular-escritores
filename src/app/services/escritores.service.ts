@@ -20,6 +20,12 @@ export class EscritoresService {
   getPorPais(pPais: string): Promise<Escritor[]>{
     return new Promise((resolve,reject) => {
       resolve(ESCRITORES.filter(escritor => escritor.pais === pPais));
-    })
+    });
+  }
+
+  getPorId(pId: number): Promise<Escritor>{
+    return new Promise((resolve,reject) => {
+      resolve(ESCRITORES.find(escritor => escritor.id === pId));
+    });
   }
 }

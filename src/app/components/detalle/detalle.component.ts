@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Escritor } from '../../models/escritor.model';
+import { EscritoresService } from '../../services/escritores.service';
 
 @Component({
   selector: 'app-detalle',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetalleComponent implements OnInit {
 
-  constructor() { }
+  escritor: Escritor;
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private escritoresService: EscritoresService
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(async params => {
+      this.escritor = await this.escritoresService.getPorId(parseInt(params.idEscritor));
+    });
   }
 
 }

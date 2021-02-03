@@ -6,7 +6,7 @@
     <option value="canadá">Canadá</option>
 </select>
 <div class="escritores">
-    <div class="escritor" *ngFor="let escritor of arrayEscritores">
+    <div class="escritor" *ngFor="let escritor of arrayEscritores" [routerLink]="['/escritores',escritor.id]">
         <h3>{{escritor.nombre}} {{escritor.apellidos}}</h3>
         <img [src]="escritor.imagen">
         <p>{{escritor.pais}}</p>
